@@ -39,6 +39,21 @@ int size=0;
 
     return 0;
 }
+void insertAtEnd(int val){
+      Node *node,*temp;
+    node=(Node *)malloc(sizeof(Node));
+    node->data=val;
+    node->prev=NULL;
+    node->next=NULL;
+    if(head==NULL){
+        head=node;
+    }
+    else{
+          temp->next=newNode;
+          newNode->prev=temp;
+          temp=newNode;
+      }
+}
 void insertAtstart(int val){
     Node *node;
     node=(Node *)malloc(sizeof(Node));
@@ -52,6 +67,31 @@ void insertAtstart(int val){
         node->next=head;
         head->prev=node;
         head=node;
+    }
+    size++;
+}
+void insertAtIdx(int val,int idx){
+    if(idx==0){
+        insertAtstart(val);
+        return;
+    }
+    else if(idx==size){
+      insertAtEnd(val);
+    }
+    else{
+        Node *temp=head;
+        Node *node;
+        node=(Node *)malloc(sizeof(Node));
+        node->data=val;
+        node->prev=NULL;
+        node->next=NULL;
+        for(int i=0;i<idx-1;i++){
+            temp=temp->next;
+        }
+        node->next=temp->next;
+        temp->next=node;
+        node->prev=temp;
+        size++;
     }
 }
 
