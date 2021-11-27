@@ -49,6 +49,8 @@ int main()
     display(head);
     delAtInd(2);
     display(head);
+    reverse();
+    display(head);
 
  
     return 0;
@@ -181,4 +183,17 @@ void insertAtIndex(int val,int idx){
             free(temp);
             size--;
         }
+    }
+    void reverse(){
+        Node *curr,*prev,*next;
+        curr=head;
+        prev=NULL;
+        next=NULL;
+        while(curr!=NULL){
+            next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=next;
+        }
+        head=prev;
     }
